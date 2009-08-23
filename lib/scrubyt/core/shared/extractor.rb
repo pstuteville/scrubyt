@@ -15,7 +15,7 @@ module Scrubyt
     #The definition of the extractor is passed through this method
     def self.define(mode=nil, &extractor_definition)
       if mode.is_a?(Hash)
-        if mode[:agent]==:firefox
+        if mode[:agent] == :firefox
           FetchAction.class_eval do
             include Navigation::Firewatir
           end

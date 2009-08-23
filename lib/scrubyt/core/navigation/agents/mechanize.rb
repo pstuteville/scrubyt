@@ -15,6 +15,7 @@ module Scrubyt
       def self.included(base)
         base.module_eval do 
           @@agent = WWW::Mechanize.new
+          @@agent.user_agent = "Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.1) Gecko/20061204 Firefox/2.0.0.1"
           @@current_doc_url = nil
           @@current_doc_protocol = nil
           @@base_dir = nil
@@ -78,7 +79,7 @@ module Scrubyt
               result_page = process_submit(@@current_form)
               #----- added by nickmerwin@gmail.com -----
             elsif index.class == String && !type.nil?
-              button = @@current_form.buttons.detect{|b| b.name == index}
+              button = @@current_form.buttons.detect{|b| b.name == index or b.value == index}
               #result_page = @@current_form.submit(button)
               result_page = process_submit(@@current_form, button,type)
               #-----------------------------------------
@@ -240,7 +241,9 @@ module Scrubyt
 
           def self.check_checkbox(checkbox_name)
             lookup_form_for_tag('input','checkbox',checkbox_name, '')
-            @@current_form.checkboxes.name(checkbox_name).check
+            #@@current_form.checkboxes.name(checkbox_name).check
+            checkbox = @@current_form.checkboxes.find {|c| c.name == checkbox_name}
+            checkbox.check
           end
 
           def self.check_radiobutton(checkbox_name, index=0)
