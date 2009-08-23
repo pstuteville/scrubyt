@@ -27,29 +27,29 @@ begin
     gemspec.add_dependency('hpricot', '>= 0.5')
     gemspec.add_dependency('mechanize', '>= 0.6.3')
     gemspec.has_rdoc = 'true'
-    # gemspec.files = FileList['lib/**/*.rb', '[A-Z]*', 'test/**/*'].to_a
-    # gemspec.test_files = FileList['test/**/*'].to_a
+    gemspec.files = FileList['lib/**/*.rb', '[A-Z]*', 'test/**/*'].to_a
+    gemspec.test_files = FileList['test/**/*'].to_a
   end
 rescue LoadError
   puts "Jeweler not available. Install it with: sudo gem install technicalpickles-jeweler -s http://gems.github.com"
 end
 
-gem_spec = Gem::Specification.new do |s|
-  s.name = 'scrubyt'
-  s.version = '0.4.31'
-  s.summary = 'A powerful Web-scraping framework built on Mechanize and Hpricot (and FireWatir)'
-  s.description = %{scRUBYt! is an easy to learn and use, yet powerful and effective web scraping framework. It's most interesting part is a Web-scraping DSL built on HPricot and WWW::Mechanize, which allows to navigate to the page of interest, then extract and query data records with a few lines of code. It is hard to describe scRUBYt! in a few sentences - you have to see it for yourself!}
-  # Files containing Test::Unit test cases.
-  s.test_files = FileList['test/unittests/**/*']
-  # List of other files to be included.
-  s.files = FileList['COPYING', 'README.rdoc', 'CHANGELOG', 'Rakefile', 'lib/**/*.rb']
-  s.author = 'Peter Szinek'
-  s.email = 'peter@rubyrailways.com'
-  s.homepage = 'http://www.scrubyt.org'
-  s.add_dependency('hpricot', '>= 0.5')
-  s.add_dependency('mechanize', '>= 0.6.3')
-  s.has_rdoc = 'true'
-end
+# gem_spec = Gem::Specification.new do |s|
+#   s.name = 'scrubyt'
+#   s.version = '0.4.31'
+#   s.summary = 'A powerful Web-scraping framework built on Mechanize and Hpricot (and FireWatir)'
+#   s.description = %{scRUBYt! is an easy to learn and use, yet powerful and effective web scraping framework. It's most interesting part is a Web-scraping DSL built on HPricot and WWW::Mechanize, which allows to navigate to the page of interest, then extract and query data records with a few lines of code. It is hard to describe scRUBYt! in a few sentences - you have to see it for yourself!}
+#   # Files containing Test::Unit test cases.
+#   s.test_files = FileList['test/**/*'].to_a
+#   # List of other files to be included.
+#   s.files = FileList['lib/**/*.rb', '[A-Z]*', 'test/**/*'].to_a
+#   s.author = 'Peter Szinek'
+#   s.email = 'peter@rubyrailways.com'
+#   s.homepage = 'http://www.scrubyt.org'
+#   s.add_dependency('hpricot', '>= 0.5')
+#   s.add_dependency('mechanize', '>= 0.6.3')
+#   s.has_rdoc = 'true'
+# end
 
 ###################################################
 # Tasks
@@ -107,11 +107,11 @@ end
 
 task "generate_rdoc" do
 end
-
-Rake::GemPackageTask.new(gem_spec) do |pkg|
-  pkg.need_zip = false
-  pkg.need_tar = false
-end
+# 
+# Rake::GemPackageTask.new(gem_spec) do |pkg|
+#   pkg.need_zip = false
+#   pkg.need_tar = false
+# end
 
 #Rake::PackageTask.new('scrubyt-examples', '0.4.03') do |pkg|
 #  pkg.need_zip = true
