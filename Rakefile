@@ -27,8 +27,8 @@ begin
     gemspec.add_dependency('hpricot', '>= 0.5')
     gemspec.add_dependency('mechanize', '>= 0.6.3')
     gemspec.has_rdoc = 'true'
-    gemspec.files = FileList['lib/**/*.rb', '[A-Z]*', 'test/**/*'].to_a
-    gemspec.test_files = FileList['test/**/*'].to_a
+    # gemspec.files = FileList['lib/**/*.rb', '[A-Z]*', 'test/**/*'].to_a
+    # gemspec.test_files = FileList['test/**/*'].to_a
   end
 rescue LoadError
   puts "Jeweler not available. Install it with: sudo gem install technicalpickles-jeweler -s http://gems.github.com"
