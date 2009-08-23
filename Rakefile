@@ -15,9 +15,28 @@ task "cleanup_readme" => ["rdoc"]
 # Gem specification
 ###################################################
 
+begin
+  require 'jeweler'
+  Jeweler::Tasks.new do |gemspec|
+    gemspec.name = 'scrubyt'
+    gemspec.summary = 'A powerful Web-scraping framework built on Mechanize and Hpricot (and FireWatir)'
+    gemspec.description = %{scRUBYt! is an easy to learn and use, yet powerful and effective web scraping framework. It's most interesting part is a Web-scraping DSL built on HPricot and WWW::Mechanize, which allows to navigate to the page of interest, then extract and query data records with a few lines of code. It is hard to describe scRUBYt! in a few sentences - you have to see it for yourself!}
+    gemspec.email = 'peter@rubyrailways.com'
+    gemspec.homepage = 'http://www.scrubyt.org'
+    gemspec.author = 'Peter Szinek'
+    gemspec.add_dependency('hpricot', '>= 0.5')
+    gemspec.add_dependency('mechanize', '>= 0.6.3')
+    gemspec.has_rdoc = 'true'
+    gemspec.files = FileList['lib/**/*.rb', '[A-Z]*', 'test/**/*'].to_a
+    gemspec.test_files = FileList['test/**/*'].to_a
+  end
+rescue LoadError
+  puts "Jeweler not available. Install it with: sudo gem install technicalpickles-jeweler -s http://gems.github.com"
+end
+
 gem_spec = Gem::Specification.new do |s|
   s.name = 'scrubyt'
-  s.version = '0.4.30'
+  s.version = '0.4.31'
   s.summary = 'A powerful Web-scraping framework built on Mechanize and Hpricot (and FireWatir)'
   s.description = %{scRUBYt! is an easy to learn and use, yet powerful and effective web scraping framework. It's most interesting part is a Web-scraping DSL built on HPricot and WWW::Mechanize, which allows to navigate to the page of interest, then extract and query data records with a few lines of code. It is hard to describe scRUBYt! in a few sentences - you have to see it for yourself!}
   # Files containing Test::Unit test cases.
